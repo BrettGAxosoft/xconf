@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block extra_css %}
+  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.less" charset="utf-8">
+{% endblock %}
+
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}js/xconf.js"></script>
+{% endblock %}
+
+{% block main %}
+<div id="homepage">
+  <div class="hero-unit home-page">
+    <h1>XConf </h1>
+    <p>S03E01</p>
+  </div>
+  
+
+  <div id="subnav-wrapper">
+    <div id ="subnav" class="navbar visible-tablet visible-desktop">
+      <div class="navbar-inner">
+        <div class ="container">
+          <ul class="nav">
+            <li class="active"><a href="#recentarticles">Recent article</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#stats">Stats</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
