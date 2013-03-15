@@ -81,9 +81,15 @@ USE_SOUTH = True
 
 BLOG_SLUG = "talks"
 
-GEOPOSITION_DEFAULT_ZOOM = 5
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
 
-GEOPOSITION_DEFAULT_CENTRE = (21.77, 78.87,)
+}
 
 
 ########################
@@ -261,13 +267,15 @@ INSTALLED_APPS = (
     "mezzanine.pages",
     "mezzanine.galleries",
     "mezzanine.twitter",
-    #"mezzanine.accounts",
+    "mezzanine.accounts",
     #"mezzanine.mobile",
 
     "south",
-    "geoposition",
     "rest_framework",
     "compressor",
+
+    "xconf.votes",
+    "xconf.talks",
 )
 
 # List of processors used by RequestContext to populate the context.
