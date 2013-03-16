@@ -8,16 +8,17 @@ from .models import Vote
 
 class VoteSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.Field()
-    username = serializers.Field(source="user.username")
+    voter = serializers.Field(source="user.username")
 
     class Meta:
         model = Vote
-        fields = ('id', 'talk', 'username')
+        fields = ('id', 'talk', 'voter')
 
 
 class VoterSerialize(serializers.HyperlinkedModelSerializer):
     id = serializers.Field()
+    votes = serializers.PrimaryKeyRelatedField(many=True)
 
     class Meta:
         model = User
-        field = ('id', 'username')
+        field = ('id', 'username', 'votes')

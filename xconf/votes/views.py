@@ -23,7 +23,13 @@ class VoteList(generics.ListCreateAPIView):
     serializer_class = VoteSerializer
     paginate_by = 10
 
+    def pre_save(self, obj):
+        obj.user = self.request.user
+
 
 class VoteDetail(generics.RetrieveDestroyAPIView):
     model = Vote
     serializer_class = VoteSerializer
+
+    def pre_save(self, obj):
+        obj.user = self.request.user
