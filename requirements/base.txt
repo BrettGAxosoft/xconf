@@ -7,6 +7,7 @@ South==0.7.6
 Unipath==0.2.1
 bleach==1.2
 django-appconf==0.6
+-e git://github.com/manojlds/django-cas2.git@7738fdf1a6ebdc6bc967a47ffb50d4855ac0e46d#egg=django_cas-dev
 django-compressor==1.2
 django-filter==0.5.4
 djangorestframework==2.2.0
