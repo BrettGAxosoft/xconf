@@ -1,20 +1,10 @@
 $(function(){
-    $('#subnav-wrapper').height($('#subnav').height());
-    $('#subnav').affix({
-        offset: {top: function() {
-            var element = $('#subnav');
-            if(!element.data('top')){
-                element.data('top', element.position().top);
-            }
-            return element.data('top');
-        }}
-    });
     Vote.init();
 });
 
 var Vote = {
     init: function() {
-        $.getJSON('/talks/api/talks/', function(talks) {
+        $.getJSON('/talks/api/talks/', function(talks) {    
         })
     }
 }

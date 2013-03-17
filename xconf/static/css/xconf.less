@@ -1,5 +1,32 @@
 @about-height: 400px;
 
+.transition-speed {
+	-webkit-transition: all .6s ease-in-out;
+	-moz-transition: all .6s ease-in-out;
+	-o-transition: all .6s ease-in-out;
+	-ms-transition: all .6s ease-in-out;
+	transition: all .6s ease-in-out;
+}
+
+.transition(@percentage: -101%) {
+	-webkit-transform: translateX(@percentage);
+	-moz-transform: translateX(@percentage);
+	-o-transform: translateX(@percentage);
+	-ms-transform: translatex(@percentage);
+}
+
+.line-height(@noOfLines: 10) {
+	line-height: 1.2em;
+	max-height: 1.2em * @noOfLines;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
 #aboutXconf {
 	height: @about-height;
 	.item {
@@ -23,8 +50,51 @@
 	left: 0;
 }
 
-#homepage {
-	.category {
-		padding-top: 35px;
+.page {
+	overflow: hidden;
+ 	box-shadow: 4px 0 3px 1px rgba(0, 0, 0, 0.4);
+ 	-webkit-box-shadow: 4px 0 3px 1px rgba(0, 0, 0, 0.4);
+	height: 100%;
+	background-color: white;
+	overflow: hidden;
+	position: absolute;
+	width: 99%;
+	z-index: 2;
+	.transition;
+	.transition-speed;
+	
+	.hero-unit {
+		.line-height(20);
+		overflow: hidden;
+		p {
+			.line-height(15);
+		}
 	}
+}
+
+#home.page {
+	.transition(0%);
+	width: 100%;
+	> div {
+		margin: 15px;
+	}
+}
+
+.page:target {
+	.transition(0%);
+}
+
+.page .hero-unit {
+  background: none repeat scroll 0 0 #gray;
+  padding: 40px 15px;
+}
+
+.row-fluid {
+	display: table;
+   	width: 100%; 
+   	.center-it {
+   		display: table-cell;
+   		text-align: center;
+   		vertical-align: middle;
+   	}
 }
