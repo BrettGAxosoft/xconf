@@ -9,17 +9,17 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Vote'
-        db.create_table(u'votes_vote', (
+        db.create_table(u'talks_vote', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(related_name='votes', to=orm['auth.User'])),
             ('talk', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['blog.BlogPost'])),
         ))
-        db.send_create_signal(u'votes', ['Vote'])
+        db.send_create_signal(u'talks', ['Vote'])
 
 
     def backwards(self, orm):
         # Deleting model 'Vote'
-        db.delete_table(u'votes_vote')
+        db.delete_table(u'talks_vote')
 
 
     models = {
@@ -150,12 +150,12 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
-        u'votes.vote': {
+        u'talks.vote': {
             'Meta': {'object_name': 'Vote'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'talk': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['blog.BlogPost']"}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"})
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'votes'", 'to': u"orm['auth.User']"})
         }
     }
 
-    complete_apps = ['votes']
+    complete_apps = ['talks']

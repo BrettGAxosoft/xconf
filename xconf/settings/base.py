@@ -274,7 +274,6 @@ INSTALLED_APPS = (
     "rest_framework",
     "compressor",
 
-    "xconf.votes",
     "xconf.talks",
 )
 
