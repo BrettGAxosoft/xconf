@@ -11,10 +11,11 @@ from .models import Vote
 class TalkSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.Field()
     votes = serializers.Field(source='vote_set.count')
+    category = serializers.Field(source='categories.all')
 
     class Meta:
         model = BlogPost
-        fields = ('id', 'title', 'votes')
+        fields = ('id', 'title', 'votes', 'category')
 
 
 class VoteSerializer(serializers.HyperlinkedModelSerializer):
