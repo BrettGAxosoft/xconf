@@ -15,6 +15,9 @@ urlpatterns = patterns("",
 
     url(r'^talks/api/', include('xconf.talks.urls')),
 
+    (r'^accounts/login/$', 'django_cas.views.login'),
+    (r'^accounts/logout/$', 'django_cas.views.logout'),
+
 
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.

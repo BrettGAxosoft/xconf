@@ -91,6 +91,9 @@ REST_FRAMEWORK = {
 
 }
 
+CAS_SERVER_URL = "https://cas.thoughtworks.com/cas"
+
+CAS_AUTO_CREATE_USERS = True
 
 ########################
 # MAIN DJANGO SETTINGS #
@@ -150,7 +153,10 @@ TEMPLATE_LOADERS = (
     "django.template.loaders.app_directories.Loader",
 )
 
-AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
+AUTHENTICATION_BACKENDS = (
+    "django_cas.backends.CASBackend",
+    "mezzanine.core.auth_backends.MezzanineBackend",
+)
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -273,6 +279,7 @@ INSTALLED_APPS = (
     "south",
     "rest_framework",
     "compressor",
+    "django_cas",
 
     "xconf.talks",
 )
@@ -300,6 +307,7 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.UpdateCacheMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django_cas.middleware.CASMiddleware",
     "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
