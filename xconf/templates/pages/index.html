@@ -95,15 +95,16 @@
           <h2>[[category.title]]</h2>
           <div class="row-fluid">
             <div class="span3" ng-repeat="talk in talks.results | limitTo:4">
-              <div class="hero-unit text-center">
-                <h3>[[talk.title]]</h3>
+              <div class="hero-unit">
+                <div class="pull-right row vote-icon vote" ng-click="vote(talk)"></div>
+                <h3 class="text-center">[[talk.title]]</h3>
                 <p>[[talk.description]]</p>
               </div>
             </div>
           </div>
           <a ng-click="nextPage(category)" ng-show="nextAvailable">Next</a>
           <a ng-click="previousPage(category)" ng-show="previousAvailable">Previous</a>
-        
+
           <div class="row-fluid">
             <div class="span3" ng-repeat="talk in talks.results | startFrom:4">
               <div class="hero-unit text-center">

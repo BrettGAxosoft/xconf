@@ -4,6 +4,9 @@ angular.module('services', ['ngResource']).
     }).
     factory('Talk', function($resource) {
          return $resource('/talks/api/categories/:categoryId/talks', {categoryId: 'categoryId'});
+    }).
+    factory('Vote', function($resource) {
+         return $resource('/talks/api/votes');
     });
 
 angular.module('xconf', ['services']).config(function($interpolateProvider) {
@@ -16,7 +19,7 @@ angular.module('xconf', ['services']).config(function($interpolateProvider) {
     };
 });
 
-var XConfCtrl = ["$scope", "Category", "Talk", function($scope, Category, Talk){
+var XConfCtrl = ["$scope", "Category", "Talk", "Vote", function($scope, Category, Talk, Vote){
     Category.get(function(data){
         data.results = _(data.results).map(function(category){
             category.hyphanizedTitle = hyphanize(category.title);
@@ -45,7 +48,7 @@ var XConfCtrl = ["$scope", "Category", "Talk", function($scope, Category, Talk){
 
     $scope.switchTalks = function(category) {
         $scope.currentPage = 1;
-        $scope.loadTalks(category);        
+        $scope.loadTalks(category);
     }
 
     $scope.nextPage = function(category){
@@ -57,4 +60,15 @@ var XConfCtrl = ["$scope", "Category", "Talk", function($scope, Category, Talk){
         $scope.currentPage -= 1;
         $scope.loadTalks(category);
     };
+
+    $scope.vote = function(talk) {
+      var vote = new Vote();
+      vote.talk = talk.id;
+      vote.csrfmiddlewaretoken = $('[name=csrfmiddlewaretoken]').val();
+      vote.$save(function(){
+        alert("Thankyou for voting");
+      }, function() {
+        alert("You have used all your votes. You can unvote a talk if you changed your mind");
+      });
+    }
 }];
