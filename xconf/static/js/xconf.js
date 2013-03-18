@@ -1,20 +1,9 @@
-$(function(){
-    Vote.init();
-});
-
-var Vote = {
-    init: function() {
-        $.getJSON('/talks/api/talks/', function(talks) {    
-        })
-    }
-}
-
-var talk = function(title, category, votes) {
-        var self=this;
-        self.title = title;
-        self.category = category;
-        self.votes = ko.observable(votes);
-    };
+// var Vote = {
+//     init: function(categoryId) {
+//         $.getJSON('/talks/api/categories/' + categoryId, function(talks) {    
+//         })
+//     }
+// }
 
 var user = function() {
     var self = this;
@@ -26,9 +15,30 @@ var user = function() {
 
 var votableViewModel = function() {
     var self = this;
-    self.talks = ko.observableArray();
+    self.categories = ko.observable();
+    self.activeCategory = ko.observable(null);
     self.user = ko.observable(new user());
+    self.getTalks = function(category)
+    {
+        $.getJSON('/talks/api/categories/' + category.id(), function(cat) {    
+            var xconf = ko.mapping.fromJS(cat);
+            console.log(xconf);
+            self.activeCategory(xconf);
+        }) ;
+    };
+
 };
 
-var xconf = new votableViewModel();
-ko.applyBindings(xconf);
+var votableViewModel = new votableViewModel();
+ko.applyBindings(votableViewModel);
+
+(function()
+{
+    $.getJSON('/talks/api/categories/', function(data) {
+        var categories = ko.mapping.fromJS(data);
+        votableViewModel.categories(categories.results());
+    });
+})();
+
+
+

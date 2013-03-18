@@ -13,22 +13,18 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script type='text/javascript' src="{{ STATIC_URL }}js/xconf.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/knockout.mapping.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/xconf.js" defer="defer"></script>
 {% endblock %}
 
 {% block main %}
 <div id="homepage">
-
  <section id="subnav-wrapper">
     <div class="navbar visible-tablet visible-desktop navbar-fixed-bottom">
       <div class="navbar-inner">
         <div class ="container">
-          <ul class="nav">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#presentations">Presentations</a></li>
-            <li><a href="#workshops">Workshops</a></li>
-            <li><a href="#lightingTalks">Lightining Talks</a></li>
-            <li><a href="#myFirstYearAtTW">My first year @ TW</a></li>
+          <ul class="nav" data-bind="foreach: categories">
+            <li><a data-bind="attr : {href: '#' + id()}, click: $root.getTalks, text: title"></a></li>
           </ul>
         </div>
       </div>
@@ -107,45 +103,16 @@
     </ol>
   </div>
 
-  <section id="presentations" class="page">
+  <section id="talks" class="page">
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span12">
-          <h2>Presentations</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque. 
-          </p>
-          <div class="row-fluid">
+        <div class="span12" data-bind="if: activeCategory">
+          <h2 data-bind="text: activeCategory().title"></h2>
+          <div class="row-fluid" data-bind="attr : {class: activeCategory().id}, foreach: activeCategory().talks">
             <div class="span3">
               <div class="hero-unit text-center">
-                  <h3>Handling Remote Data in iOS applications</h3>
-                  <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-                  </p>
-              </div>
-            </div>
-            <div class="span3">
-              <div class="hero-unit text-center">
-                  <h3>Bending the hierarchy at Honeywell</h3>
-                  <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-                  </p>
-              </div>
-            </div>
-            <div class="span3">
-              <div class="hero-unit text-center">
-                  <h3>Novice Entrepreneur</h3>
-                  <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-                  </p>
-              </div>
-            </div>
-            <div class="span3">
-              <div class="hero-unit text-center">
-                  <h3>The Business of Baking : From inception to delivery</h3>
-                  <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-                  </p>
+                  <h3 data-bind="text: title"></h3>
+                  <p data-bind="text: description"></p>
               </div>
             </div>
           </div>
