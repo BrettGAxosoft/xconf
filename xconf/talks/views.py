@@ -44,6 +44,10 @@ class CategoryTalks(generics.ListAPIView):
     serializer_class = TalkSerializer
     paginate_by = 8
 
+    def get_queryset(self):
+        pk = self.kwargs['pk']
+        return BlogCategory.objects.get(pk=pk).blogposts.all()
+
 
 class VoteList(generics.ListCreateAPIView):
     model = Vote
