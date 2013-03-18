@@ -16,25 +16,13 @@
     <script type='text/javascript' src="{{ STATIC_URL }}js/xconf.js"></script>
 {% endblock %}
 
-{% block main %}
-<div id="homepage" ng-controller="XConfCtrl">
+{% block navigation %}
+  <li ng-repeat="category in categories.results">
+    <a href="#[[category.hyphanizedTitle]]" ng-click="switchTalks(category)">[[category.title]]</a>
+  </li>
+{% endblock %}
 
- <section id="subnav-wrapper" >
-    <div class="navbar visible-tablet visible-desktop navbar-fixed-bottom">
-      <div class="navbar-inner">
-        <div class ="container">
-          <ul class="nav">
-            <li>
-              <a href="#home">Home</a>
-            </li>
-            <li ng-repeat="category in categories.results">
-              <a href="#[[category.hyphanizedTitle]]" ng-click="switchTalks(category)">[[category.title]]</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+{% block main %}
   <section id="home" class="page">
     <div id="aboutXconf" class="carousel slide">
       <!-- Carousel items -->
@@ -137,7 +125,4 @@
       </div>
     </div>
   </div>
-
-
-</div>
 {% endblock %}

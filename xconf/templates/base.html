@@ -39,7 +39,24 @@
 <body id="{% block body_id %}body{% endblock %}">
   <div>
       {% include "includes/user_panel.html" %}
-      {% block main %}{% endblock %}
+      <div ng-controller="XConfCtrl">
+        <section id="subnav-wrapper" >
+          <div class="navbar visible-tablet visible-desktop navbar-fixed-bottom">
+            <div class="navbar-inner">
+              <div class ="container">
+                <ul class="nav">
+                  <li>
+                    <a href="#home">Home</a>
+                  </li>
+                  {% block navigation %}
+                  {% endblock %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        {% block main %}{% endblock %}
+      </div>
   </div>
   {% compress js %}
     <script>
