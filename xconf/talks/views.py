@@ -7,7 +7,7 @@ from rest_framework.reverse import reverse
 from rest_framework.response import Response
 
 from .models import Vote
-from .serializers import TalkSerializer, CategorySerializer, VoteSerializer
+from .serializers import TalkSerializer, CategorySerializer, VoteSerializer, VoteTalkDetailSerializer
 
 
 @api_view(['GET'])
@@ -50,7 +50,7 @@ class CategoryTalks(generics.ListAPIView):
 
 class CategoryUserVotes(generics.ListAPIView):
     model=Vote
-    serializer_class = VoteSerializer
+    serializer_class = VoteTalkDetailSerializer
 
     def get_queryset(self):
         pk = self.kwargs['pk']
@@ -64,7 +64,7 @@ class VoteList(generics.ListCreateAPIView):
 
     def pre_save(self, obj):
         obj.user = self.request.user
-
+        
 
 class VoteDetail(generics.RetrieveDestroyAPIView):
     model = Vote

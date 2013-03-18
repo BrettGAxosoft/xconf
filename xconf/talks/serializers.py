@@ -26,7 +26,7 @@ class CategorySerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'title')
 
 
-class VoteSerializer(serializers.HyperlinkedModelSerializer):
+class VoteSerializer(serializers.ModelSerializer):
     id = serializers.Field()
     voter = serializers.Field(source="user.username")
 
@@ -44,6 +44,13 @@ class VoteSerializer(serializers.HyperlinkedModelSerializer):
             msg = u"Only 3 votes per user per talk type"
             raise ValidationError(msg)
         return attr
+
+class VoteTalkDetailSerializer(VoteSerializer):
+    talk = TalkSerializer()
+
+    class Meta:
+        model = Vote
+        fields = ('id', 'talk', 'voter')
 
 
 class VoterSerializer(serializers.HyperlinkedModelSerializer):
