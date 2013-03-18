@@ -88,15 +88,7 @@
     </div>
   </section>
 
-  <div id="presentation" class="carousel slide">
-    <ol class="carousel-indicators">
-      <li data-target="#aboutXconf" data-slide-to="0" class="active"></li>
-      <li data-target="#aboutXconf" data-slide-to="1"></li>
-      <li data-target="#aboutXconf" data-slide-to="2"></li>
-    </ol>
-  </div>
-
-  <section id="[[category.hyphanizedTitle]]" class="page" ng-repeat="category in categories.results">
+  <section id="[[category.hyphanizedTitle]]" class="page page-[[category.id]] " ng-repeat="category in categories.results">
     <div class="container-fluid">
       <div class="row-fluid">   
         <div class="span12">
