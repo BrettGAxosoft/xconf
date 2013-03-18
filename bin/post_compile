@@ -20,4 +20,16 @@ if [ -f bin/install_nodejs ]; then
     fi
 fi
 
+if [ -f bin/run_collectstatic ]; then
+    echo "-----> Running run_collectstatic"
+    chmod +x bin/run_collectstatic
+    bin/run_collectstatic
+fi
+
+if [ -f bin/run_compress ]; then
+    echo "-----> Running run_compress"
+    chmod +x bin/run_compress
+    bin/run_compress
+fi
+
 echo "-----> Post-compile done"
