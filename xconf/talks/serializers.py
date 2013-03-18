@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 
-from mezzanine.blog.models import BlogPost
+from mezzanine.blog.models import BlogPost, BlogCategory
 from mezzanine.accounts.models import User
 
 from rest_framework import serializers
@@ -15,7 +15,16 @@ class TalkSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = BlogPost
-        fields = ('id', 'title', 'votes', 'category')
+        fields = ('id', 'title', 'votes', 'category', 'description')
+
+
+class CategorySerializer(serializers.HyperlinkedModelSerializer):
+    id = serializers.Field()
+    talks = TalkSerializer(many=True, source='blogposts')
+
+    class Meta:
+        model = BlogCategory
+        fields = ('id', 'title', 'talks')
 
 
 class VoteSerializer(serializers.HyperlinkedModelSerializer):

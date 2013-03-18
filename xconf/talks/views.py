@@ -1,19 +1,19 @@
-from mezzanine.blog.models import BlogPost
+from mezzanine.blog.models import BlogPost, BlogCategory
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.reverse import reverse
 from rest_framework.response import Response
 
 from .models import Vote
-from .serializers import TalkSerializer
-from .serializers import VoteSerializer
+from .serializers import TalkSerializer, CategorySerializer, VoteSerializer
 
 
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
         'talks': reverse('talk-list', request=request),
-        'votes': reverse('vote-list', request=request)
+        'votes': reverse('vote-list', request=request),
+        'categories': reverse('category-list', request=request),
     })
 
 
@@ -26,6 +26,17 @@ class TalkList(generics.ListAPIView):
 class TalkDetail(generics.RetrieveAPIView):
     model = BlogPost
     serializer_class = TalkSerializer
+
+
+class CategoryList(generics.ListAPIView):
+    model = BlogCategory
+    serializer_class = CategorySerializer
+    paginate_by = 10
+
+
+class CategoryDetail(generics.RetrieveAPIView):
+    model = BlogCategory
+    serializer_class = CategorySerializer
 
 
 class VoteList(generics.ListCreateAPIView):
