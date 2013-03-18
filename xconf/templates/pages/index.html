@@ -17,18 +17,19 @@
 {% endblock %}
 
 {% block main %}
-<div id="homepage">
+<div id="homepage" ng-controller="XConfCtrl">
 
- <section id="subnav-wrapper">
+ <section id="subnav-wrapper" >
     <div class="navbar visible-tablet visible-desktop navbar-fixed-bottom">
       <div class="navbar-inner">
         <div class ="container">
           <ul class="nav">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#presentations">Presentations</a></li>
-            <li><a href="#workshops">Workshops</a></li>
-            <li><a href="#lightingTalks">Lightining Talks</a></li>
-            <li><a href="#myFirstYearAtTW">My first year @ TW</a></li>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li ng-repeat="category in categories.results">
+              <a href="#[[category.hyphanizedTitle]]" ng-click="switchTalks(category)">[[category.title]]</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -107,132 +108,36 @@
     </ol>
   </div>
 
-  <section id="presentations" class="page">
+  <section id="[[category.hyphanizedTitle]]" class="page" ng-repeat="category in categories.results">
     <div class="container-fluid">
-      <div class="row-fluid">
+      <div class="row-fluid">   
         <div class="span12">
-          <h2>Presentations</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque. 
-          </p>
+          <h2>[[category.title]]</h2>
           <div class="row-fluid">
-            <div class="span3">
+            <div class="span3" ng-repeat="talk in talks.results | limitTo:4">
               <div class="hero-unit text-center">
-                  <h3>Handling Remote Data in iOS applications</h3>
-                  <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-                  </p>
-              </div>
-            </div>
-            <div class="span3">
-              <div class="hero-unit text-center">
-                  <h3>Bending the hierarchy at Honeywell</h3>
-                  <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-                  </p>
-              </div>
-            </div>
-            <div class="span3">
-              <div class="hero-unit text-center">
-                  <h3>Novice Entrepreneur</h3>
-                  <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-                  </p>
-              </div>
-            </div>
-            <div class="span3">
-              <div class="hero-unit text-center">
-                  <h3>The Business of Baking : From inception to delivery</h3>
-                  <p>
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-                  </p>
+                <h3>[[talk.title]]</h3>
+                <p>[[talk.description]]</p>
               </div>
             </div>
           </div>
+          <a ng-click="nextPage(category)" ng-show="nextAvailable">Next</a>
+          <a ng-click="previousPage(category)" ng-show="previousAvailable">Previous</a>
+        
+          <div class="row-fluid">
+            <div class="span3" ng-repeat="talk in talks.results | startFrom:4">
+              <div class="hero-unit text-center">
+                <h3>[[talk.title]]</h3>
+                <p>[[talk.description]]</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section id="workshops" class="page">
-    <h2>Workshops</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque. 
-    </p>
-    <div>
-      <h3>Beyond MoSCoW - Prioritization techniques for project teams</h3>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-      </p>
-    </div>
-    <div>
-      <h3>Are you the weakest link?</h3>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-      </p>
-    </div>
-    <div>
-      <h3>HIVE workshop to design a bigdata warehouse</h3>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-      </p>
-    </div>
-    <div>
-      <h3>Learning the fun way - Games and Activities</h3>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-      </p>
-    </div>
-    <div>
-      <h3>Twist Your Tails Off</h3>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-      </p>
-    </div>
-  </section>
-  
-  <section id="lightingTalks" class="page">
-    <h2>Lightining Talks</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque. 
-    </p>
-    <div>
-      <h3>The Business of Baking : From inception to delivery</h3>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-      </p>
-    </div>
-    <div>
-      <h3>The Wizard of Oz experiment</h3>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-      </p>
-    </div>
-    <div>
-      <h3>The Science of Fast Bowling and Send the Stumps Flying</h3>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-      </p>
-    </div>
-    <div>
-      <h3>How to make ideas stick</h3>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-      </p>
-    </div>
-    <div>
-      <h3>Abstractions: Lessons from Origami</h3>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque.
-      </p>
-    </div>
-  </section>
 
-  <section id="myFirstYearAtTW" class="page">
-    <h2>My first year @TW</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempor molestie lectus vitae rhoncus. Phasellus rhoncus enim ac dolor tempor vitae rutrum tellus porttitor. Vestibulum et ante eros. In vel augue in lorem venenatis tempor non id justo. Vestibulum mattis urna vitae lacus elementum sed vehicula tortor mollis. Praesent nunc lacus, aliquet vel vestibulum sed, sollicitudin in orci. Suspendisse enim ante, auctor non sollicitudin nec, varius et orci. Maecenas sem tellus, viverra ut lacinia nec, pulvinar at augue. Phasellus sagittis vehicula auctor. Nulla sagittis auctor risus vitae dapibus. Phasellus ornare tincidunt ullamcorper. Donec quis nulla eu libero blandit condimentum ut sit amet neque. 
-    </p>
-  </section>
 </div>
 {% endblock %}
