@@ -20,11 +20,10 @@ class TalkSerializer(serializers.HyperlinkedModelSerializer):
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.Field()
-    talks = TalkSerializer(many=True, source='blogposts')
 
     class Meta:
         model = BlogCategory
-        fields = ('id', 'title', 'talks')
+        fields = ('id', 'title')
 
 
 class VoteSerializer(serializers.HyperlinkedModelSerializer):

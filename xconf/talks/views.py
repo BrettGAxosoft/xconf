@@ -1,3 +1,5 @@
+from django.core.paginator import Paginator, PageNotAnInteger
+
 from mezzanine.blog.models import BlogPost, BlogCategory
 from rest_framework import generics
 from rest_framework.decorators import api_view
@@ -20,7 +22,6 @@ def api_root(request, format=None):
 class TalkList(generics.ListAPIView):
     model = BlogPost
     serializer_class = TalkSerializer
-    paginate_by = 10
 
 
 class TalkDetail(generics.RetrieveAPIView):
@@ -31,7 +32,6 @@ class TalkDetail(generics.RetrieveAPIView):
 class CategoryList(generics.ListAPIView):
     model = BlogCategory
     serializer_class = CategorySerializer
-    paginate_by = 10
 
 
 class CategoryDetail(generics.RetrieveAPIView):
@@ -39,10 +39,15 @@ class CategoryDetail(generics.RetrieveAPIView):
     serializer_class = CategorySerializer
 
 
+class CategoryTalks(generics.ListAPIView):
+    model = BlogPost
+    serializer_class = TalkSerializer
+    paginate_by = 8
+
+
 class VoteList(generics.ListCreateAPIView):
     model = Vote
     serializer_class = VoteSerializer
-    paginate_by = 10
 
     def pre_save(self, obj):
         obj.user = self.request.user
