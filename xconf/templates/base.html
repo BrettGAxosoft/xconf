@@ -37,26 +37,26 @@
     <script src="{{ STATIC_URL }}js/underscore.min.js"></script>
 </head>
 <body id="{% block body_id %}body{% endblock %}">
-  <div>
-      {% include "includes/user_panel.html" %}
-      <div ng-controller="XConfCtrl">
-        <section id="subnav-wrapper" >
-          <div class="navbar visible-tablet visible-desktop navbar-fixed-bottom">
-            <div class="navbar-inner">
-              <div class ="container">
-                <ul class="nav">
-                  <li>
-                    <a href="#home">Home</a>
-                  </li>
-                  {% block navigation %}
-                  {% endblock %}
-                </ul>
-              </div>
+  <div ng-controller="XConfCtrl" class="xconf">
+    <section id="subnav-wrapper" >
+      <div class="navbar visible-tablet visible-desktop navbar-fixed-bottom">
+        <div class="navbar-inner">
+          <div class ="container">
+            <ul class="nav">
+              <li>
+                <a href="#home">Home</a>
+              </li>
+              {% block navigation %}
+              {% endblock %}
+            </ul>
+            <div class="pull-right">
+              {% include "includes/user_panel.html" %}
             </div>
           </div>
-        </section>
-        {% block main %}{% endblock %}
+        </div>
       </div>
+    </section>
+    {% block main %}{% endblock %}
   </div>
   {% compress js %}
     <script>
