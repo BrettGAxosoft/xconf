@@ -175,8 +175,6 @@ COMPRESS_ENABLED = True
 
 WSGI_APPLICATION = "xconf.wsgi.application"
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
 #############
 # DATABASES #
 #############
