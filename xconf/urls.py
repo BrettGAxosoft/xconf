@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
+from django.conf import settings
 from django.contrib import admin
+
 
 admin.autodiscover()
 
@@ -87,6 +89,10 @@ urlpatterns = patterns("",
     # need to use the ``SITE_PREFIX`` setting as well.
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
+)
+
+urlpatterns += patterns('',
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 )
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
