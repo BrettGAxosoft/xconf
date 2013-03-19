@@ -178,7 +178,7 @@ COMPRESS_ENABLED = True
 
 WSGI_APPLICATION = "xconf.wsgi.application"
 
-APPEND_SLASH = False
+# APPEND_SLASH = False
 
 #############
 # DATABASES #
