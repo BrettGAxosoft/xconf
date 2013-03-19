@@ -64,7 +64,7 @@ class VoteList(generics.ListCreateAPIView):
 
     def pre_save(self, obj):
         obj.user = self.request.user
-        
+
 
 class VoteDetail(generics.RetrieveDestroyAPIView):
     model = Vote

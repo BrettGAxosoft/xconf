@@ -90,6 +90,9 @@ REST_FRAMEWORK = {
     ),
     'PAGINATE_BY': 10,
     'PAGINATE_BY_PARAM': 'page_size',
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
 }
 
 CAS_SERVER_URL = "https://cas.thoughtworks.com/cas"
@@ -174,6 +177,8 @@ COMPRESS_PRECOMPILERS = (
 COMPRESS_ENABLED = True
 
 WSGI_APPLICATION = "xconf.wsgi.application"
+
+APPEND_SLASH = False
 
 #############
 # DATABASES #

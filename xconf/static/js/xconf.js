@@ -17,6 +17,12 @@ angular.module('xconf', ['services']).config(function($interpolateProvider) {
         start = +start; //parse to int
         return input.slice(start);
     };
+}).config(function($httpProvider) {
+    $httpProvider.defaults.transformRequest.push(function(data, headersGetter) {
+        var headers = headersGetter();
+        headers['X-CSRFToken'] = $('input[name=csrfmiddlewaretoken]').val();
+        return data;
+    });
 });
 
 var XConfCtrl = ["$scope", "Category", "Talk", "Vote", function($scope, Category, Talk, Vote){
@@ -71,7 +77,7 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", function($scope, Category
       vote.talk = talk.id;
       vote.csrfmiddlewaretoken = $('[name=csrfmiddlewaretoken]').val();
       vote.$save(function(){
-        alert("Thankyou for voting");
+        alert("Thank you for voting");
       }, function() {
         alert("You have used all your votes. You can unvote a talk if you changed your mind");
       });
