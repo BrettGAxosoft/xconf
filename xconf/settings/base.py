@@ -284,6 +284,7 @@ INSTALLED_APPS = (
     "rest_framework",
     "compressor",
     "django_cas",
+    "csvimport",
 
     "xconf.talks",
 )

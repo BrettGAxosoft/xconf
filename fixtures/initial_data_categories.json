@@ -1,0 +1,38 @@
+[
+  {
+    "pk": 1,
+    "model": "blog.blogcategory",
+    "fields": {
+      "slug": "presentation",
+      "site": 1,
+      "title": "Presentation"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "blog.blogcategory",
+    "fields": {
+      "slug": "lightning-talk",
+      "site": 1,
+      "title": "Lightning talk"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "blog.blogcategory",
+    "fields": {
+      "slug": "workshop",
+      "site": 1,
+      "title": "Workshop"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "blog.blogcategory",
+    "fields": {
+      "slug": "my-first-year-tw",
+      "site": 1,
+      "title": "My First Year @ TW"
+    }
+  }
+]

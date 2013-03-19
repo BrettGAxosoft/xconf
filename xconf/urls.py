@@ -13,12 +13,12 @@ urlpatterns = patterns("",
 
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
-    ("^admin/", include(admin.site.urls)),
+    ("^admin", include(admin.site.urls)),
 
     url(r'^talks/api/', include('xconf.talks.urls')),
 
-    (r'^accounts/login/$', 'django_cas.views.login'),
-    (r'^accounts/logout/$', 'django_cas.views.logout'),
+    (r'^accounts/login$', 'django_cas.views.login'),
+    (r'^accounts/logout$', 'django_cas.views.logout'),
 
 
     # We don't want to presume how your homepage works, so here are a
