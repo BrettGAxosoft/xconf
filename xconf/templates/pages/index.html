@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block navigation %}
-  <li ng-repeat="category in categories.results">
+  <li ng-repeat="category in categories.results" class="[[isCurrentPage(category)]]">
     <a href="#[[category.hyphanizedTitle]]" ng-click="switchTalks(category)">[[category.title]]</a>
   </li>
 {% endblock %}

@@ -33,6 +33,11 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", function($scope, Category
         return string.replace(' ','-');
     };
 
+    $scope.isCurrentPage = function(category) {
+        console.log(window.location.hash);
+        return ("#" + category.hyphanizedTitle == window.location.hash) ? "active" : "";
+    };
+
     $scope.currentPage = 1;
     $scope.pageSize = 4;
 
