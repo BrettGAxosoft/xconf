@@ -99,6 +99,12 @@ CAS_SERVER_URL = "https://cas.thoughtworks.com/cas"
 
 CAS_AUTO_CREATE_USERS = True
 
+PUBLIC_VIEWS = [
+    'django_cas.views.login',
+]
+
+LOGIN_URL = "/accounts/login"
+
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
@@ -284,7 +290,6 @@ INSTALLED_APPS = (
     "rest_framework",
     "compressor",
     "django_cas",
-    "csvimport",
 
     "xconf.talks",
 )
@@ -312,6 +317,7 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.UpdateCacheMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "privateviews.middleware.LoginRequiredMiddleware",
     "django_cas.middleware.CASMiddleware",
     "django.contrib.redirects.middleware.RedirectFallbackMiddleware",
     "django.middleware.common.CommonMiddleware",
