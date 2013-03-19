@@ -15,7 +15,6 @@
 {% block extra_js %}
     <script type='text/javascript' src="{{ STATIC_URL }}js/xconf.js"></script>
 {% endblock %}
-
 {% block navigation %}
   <li ng-repeat="category in categories.results" class="[[isCurrentPage(category)]] nav-item page-[[category.id]]">
     <a href="#[[category.hyphanizedTitle]]" ng-click="switchTalks(category)">[[category.title]]</a>
@@ -23,6 +22,7 @@
 {% endblock %}
 
 {% block main %}
+  <input name="csrfmiddlewaretoken" value="{{ csrf_token }}" type="hidden"/>
   <section id="home" class="page">
     <div id="aboutXconf" class="carousel slide">
       <!-- Carousel items -->
@@ -97,7 +97,7 @@
             <div class="span3" ng-repeat="talk in talks.results | limitTo:4">
               <div class="hero-unit">
                 <div>
-                  <div class="pull-right row vote-icon vote" ng-click="vote(talk)"></div>
+                  <div class="pull-right row vote-icon" ng-click="toggleVote(talk, category)" ng-class="{unvote: hasVoted(talk)}"></div>
                   <h3 class="text-center">[[talk.title]]</h3>
                 </div>
                 <p>[[talk.description]]</p>
@@ -109,12 +109,22 @@
 
           <div class="row-fluid">
             <div class="span3" ng-repeat="talk in talks.results | startFrom:4">
-              <div class="hero-unit text-center">
-                <h3>[[talk.title]]</h3>
+              <div class="hero-unit">
+                <div>
+                  <div class="pull-right row vote-icon" ng-click="toggleVote(talk, category)" ng-class="{unvote: hasVoted(talk)}"></div>
+                  <h3 class="text-center">[[talk.title]]</h3>
+                </div>
                 <p>[[talk.description]]</p>
               </div>
             </div>
           </div>
+
+          <ul>
+            <li ng-repeat="vote in userVotes.results">
+              [[vote.talk.title]]
+            </li>
+          </ul>
+
 
         </div>
       </div>

@@ -6,8 +6,12 @@ angular.module('services', ['ngResource']).
          return $resource('/talks/api/categories/:categoryId/talks', {categoryId: 'categoryId'});
     }).
     factory('Vote', function($resource) {
-         return $resource('/talks/api/votes');
+         return $resource('/talks/api/votes/:id', {'id': '@id'});
+    }).
+    factory('VotedTalk', function($resource) {
+         return $resource('/talks/api/categories/:categoryId/uservotes', {categoryId: 'categoryId'});
     });
+
 
 angular.module('xconf', ['services']).config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
@@ -25,7 +29,7 @@ angular.module('xconf', ['services']).config(function($interpolateProvider) {
     });
 });
 
-var XConfCtrl = ["$scope", "Category", "Talk", "Vote", function($scope, Category, Talk, Vote){
+var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", function($scope, Category, Talk, Vote, VotedTalk){
     Category.get(function(data){
         data.results = _(data.results).map(function(category){
             category.hyphanizedTitle = hyphanize(category.title);
@@ -40,7 +44,6 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", function($scope, Category
     };
 
     $scope.isCurrentPage = function(category) {
-        console.log(window.location.hash);
         return ("#" + category.hyphanizedTitle == window.location.hash) ? "active" : "";
     };
 
@@ -60,6 +63,14 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", function($scope, Category
     $scope.switchTalks = function(category) {
         $scope.currentPage = 1;
         $scope.loadTalks(category);
+        $scope.loadVotedTalks(category);
+    };
+
+    $scope.loadVotedTalks = function(category) {
+        $scope.userVotes = $scope.userVotes || {results: []};
+        VotedTalk.get({categoryId: category.id}, function(data){
+          $scope.userVotes = data;
+        });
     }
 
     $scope.nextPage = function(category){
@@ -72,14 +83,30 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", function($scope, Category
         $scope.loadTalks(category);
     };
 
-    $scope.vote = function(talk) {
+    $scope.hasVoted = function(talk) {
+      return _($scope.userVotes.results).detect(function(vote){
+        return vote.talk.id === talk.id;
+      });
+    };
+
+    $scope.toggleVote = function(talk, category) {
+      $scope.hasVoted(talk) ? $scope.unvote(talk, category) : $scope.vote(talk, category);
+    };
+
+    $scope.unvote = function(talk, category) {
+      new Vote({id: $scope.hasVoted(talk).id}).$delete(function(){
+       $scope.loadVotedTalks(category);
+      });
+    };
+
+    $scope.vote = function(talk, category) {
       var vote = new Vote();
       vote.talk = talk.id;
-      vote.csrfmiddlewaretoken = $('[name=csrfmiddlewaretoken]').val();
       vote.$save(function(){
-        alert("Thank you for voting");
-      }, function() {
-        alert("You have used all your votes. You can unvote a talk if you changed your mind");
+        //alert("Thank you for voting");
+        $scope.loadVotedTalks(category);
+      }, function(response) {
+        alert(response.data.voter);
       });
-    }
+    };
 }];
