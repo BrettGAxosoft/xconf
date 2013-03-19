@@ -20,6 +20,14 @@
 	max-height: 1.2em * @noOfLines;
 }
 
+.page-color(@color1, @color2) {
+	color: #fff;
+	background-color: @color1;
+	.hero-unit {
+		background-color: @color2;
+	}
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -90,50 +98,44 @@ html, body {
   padding: 40px 15px;
 }
 
-.row-fluid {
-	display: table;
-   	width: 100%; 
-   	.center-it {
-   		display: table-cell;
-   		text-align: center;
-   		vertical-align: middle;
-   	}
-}
-
 .xconf {
 	.panel {
 		padding: 0;
 		margin: 0;
 	}
-	#home.page {
+	#home.page, .page-0 {
 		color: #fff;
-		background-color: #2F789B;
-		.hero-unit {
-			background-color: #A7C7D6;
-		}
+		.page-color(#919C86, #DFE5DA);
 	}
 	.page-1 {
-		background-color: #66FF99;
-		.hero-unit {
-			background-color: #D3FFE1;
-		}
+		.page-color(#9E373E, #AA7B7E);
 	}
 	.page-2 {
-		background-color: #66CCFF;
-		.hero-unit {
-			background-color: #CEEFFF;
-		}
+		.page-color(#2B2E36, #A4A7AD);
 	}
 	.page-3 {
-		background-color: #9375FF;
-		.hero-unit {
-			background-color: #DDD3FF;
-		}
+		.page-color(#342B3C, #64477F);
 	}
 	.page-4 {
-		background-color: #FFA566;
-		.hero-unit {
-			background-color: #FFDBC4;
+		.page-color(#C45A3B, #C97F6A);
+	}
+	.navbar-fixed-bottom {
+		.nav {
+			width: 100%;
+			li {
+				width: 20%;
+				a {
+					text-shadow: none;
+					color: #fff;
+					font-weight: bold;	
+				}
+			}
+			li.active {
+				background: #fff;
+				a, a:hover {
+					color: #000;
+				};
+			}
 		}
 	}
 }
