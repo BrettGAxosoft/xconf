@@ -22,6 +22,14 @@ class TalkSerializer(serializers.HyperlinkedModelSerializer):
     def get_descrption(self, obj):
         return truncatewords_html(obj.content, 12)
 
+class TalkDetailSerializer(TalkSerializer):
+    class Meta:
+        model = BlogPost
+        fields = ('id', 'title', 'votes', 'category', 'description')
+
+    def get_descrption(self, obj):
+        return obj.content
+
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.Field()

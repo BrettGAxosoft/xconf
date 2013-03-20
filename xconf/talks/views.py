@@ -7,7 +7,7 @@ from rest_framework.reverse import reverse
 from rest_framework.response import Response
 
 from .models import Vote
-from .serializers import TalkSerializer, CategorySerializer, VoteSerializer, VoteTalkDetailSerializer
+from .serializers import TalkSerializer, TalkDetailSerializer, CategorySerializer, VoteSerializer, VoteTalkDetailSerializer
 
 
 @api_view(['GET'])
@@ -27,6 +27,11 @@ class TalkList(generics.ListAPIView):
 class TalkDetail(generics.RetrieveAPIView):
     model = BlogPost
     serializer_class = TalkSerializer
+
+
+class TalkFullDetail(generics.RetrieveAPIView):
+    model = BlogPost
+    serializer_class = TalkDetailSerializer
 
 
 class CategoryList(generics.ListAPIView):
