@@ -48,7 +48,7 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", function($sc
     };
 
     $scope.currentPage = 1;
-    $scope.pageSize = 4;
+    $scope.pageSize = 8;
 
     $scope.talks = {results: []};
 

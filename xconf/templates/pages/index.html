@@ -98,7 +98,7 @@
             <div class="span3" ng-repeat="talk in talks.results | limitTo:4">
               <div class="hero-unit">
                 <div>
-                  <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(talk, category)" ng-class="{'icon-thumbs-down': hasVoted(talk)}"></i>
+                  <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(talk, category)" ng-class="{'voted': hasVoted(talk)}"></i>
                   <h3 class="text-center">[[talk.title]]</h3>
                 </div>
                 <p>[[talk.description]]</p>
@@ -113,7 +113,7 @@
             <div class="span3" ng-repeat="talk in talks.results | startFrom:4">
               <div class="hero-unit">
                 <div>
-                  <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(talk, category)" ng-class="{'icon-thumbs-down': hasVoted(talk)}"></i>
+                  <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(talk, category)" ng-class="{'voted': hasVoted(talk)}"></i>
                   <h3 class="text-center">[[talk.title]]</h3>
                 </div>
                 <p>[[talk.description]]</p>
