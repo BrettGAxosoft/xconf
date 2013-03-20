@@ -117,7 +117,7 @@
                   <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(talk, category)" ng-class="{'voted': hasVoted(talk)}"></i>
                   <h3 class="hover text-center" ng-click="showTalkDetails(talk, category)">[[talk.title]]</h3>
                 </div>
-                <p>[[talk.description]]</p>
+                <p ng-click="showTalkDetails(talk, category)">[[talk.description]]</p>
               </div>
             </div>
           </div>
@@ -129,7 +129,7 @@
                   <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(talk, category)" ng-class="{'voted': hasVoted(talk)}"></i>
                   <h3 class="hover text-center" ng-click="showTalkDetails(talk, category)">[[talk.title]]</h3>
                 </div>
-                <p>[[talk.description]]</p>
+                <p ng-click="showTalkDetails(talk, category)">[[talk.description]]</p>
               </div>
             </div>
           </div>
