@@ -56,17 +56,23 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", "TalkDetail"
     $scope.talks = {results: []};
     $scope.userVotes = {results: []};
 
+    var getRandomInt = function(min, max){
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
 
     $scope.loadTalks = function(category){
         Talk.get({categoryId: category.id, page_size: $scope.pageSize, page: $scope.currentPage}, function(data){
             $scope.talks = data;
-            $scope.nextAvailable = data.next;
-            $scope.previousAvailable = data.previous;
+            $scope.nextAvailable = true;
+            $scope.previousAvailable = true;
         });
     };
 
     $scope.switchTalks = function(category) {
-        $scope.currentPage = 1;
+        var totalCount = {1: 74, 2: 35, 3: 12, 4: 16 }; //Please talk to Krishna if you want to know why this kolaveri
+
+        $scope.currentPage = getRandomInt(1, Math.ceil(totalCount[category.id] / $scope.pageSize));
+
         $scope.loadTalks(category);
         $scope.loadVotedTalks(category);
     };
@@ -78,12 +84,21 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", "TalkDetail"
     }
 
     $scope.nextPage = function(category){
+      var pages = Math.ceil($scope.talks.count / $scope.pageSize) + 1;
+      $scope.currentPage = ($scope.currentPage + 1) % pages;
+      if($scope.currentPage == 0){
         $scope.currentPage += 1;
-        $scope.loadTalks(category);
+      }
+      $scope.loadTalks(category);
     };
 
     $scope.previousPage = function(category) {
-        $scope.currentPage -= 1;
+      var pages = Math.ceil($scope.talks.count / $scope.pageSize) + 1;
+      $scope.currentPage = ($scope.currentPage - 1) % pages;
+      if($scope.currentPage == 0){
+        $scope.currentPage = (pages - 1);
+      }
+
         $scope.loadTalks(category);
     };
 
