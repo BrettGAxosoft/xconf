@@ -92,9 +92,24 @@
     <div class="container-fluid">
       <div class="row-fluid">   
         <div class="span12">
-          <h2>[[category.title]]</h2>
+          <div>
+            <h2 class="pull-left topic-title">[[category.title]]</h2>
+            <div class="votes">
+              <div class="btn-group dropdown">
+                <button class="btn">Votes ([[userVotes.results.length]])</button>
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li ng-repeat="vote in userVotes.results">
+                    <a>[[vote.talk.title]]</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
           
-          <div class="row-fluid">
+          <div class="row-fluid talks">
             <div class="span3" ng-repeat="talk in talks.results | limitTo:4">
               <div class="hero-unit">
                 <div>
@@ -122,20 +137,6 @@
           </div>
 
         </div>
-      </div>
-    </div>
-    
-    <div class="votes">
-      <div class="btn-group dropdown">
-        <button class="btn">Votes ([[userVotes.results.length]])</button>
-            <button class="btn dropdown-toggle" data-toggle="dropdown">
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-        <li ng-repeat="vote in userVotes.results">
-          <a>[[vote.talk.title]]</a>
-        </li>
-      </ul>
       </div>
     </div>
 
