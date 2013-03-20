@@ -105,8 +105,9 @@
               </div>
             </div>
           </div>
-          <a ng-click="nextPage(category)" ng-show="nextAvailable">Next</a>
-          <a ng-click="previousPage(category)" ng-show="previousAvailable">Previous</a>
+
+          <a class="page-nav prev" ng-click="previousPage(category)" ng-show="previousAvailable">Previous</a>
+          <a class="page-nav next" ng-click="nextPage(category)" ng-show="nextAvailable">Next</a>
 
           <div class="row-fluid">
             <div class="span3" ng-repeat="talk in talks.results | startFrom:4">
@@ -126,7 +127,7 @@
     
     <div class="votes">
       <div class="btn-group dropdown">
-        <button class="btn">Votes</button>
+        <button class="btn">Votes ([[userVotes.results.length]])</button>
           <button class="btn dropdown-toggle" data-toggle="dropdown">
           <span class="caret"></span>
         </button>
