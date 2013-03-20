@@ -4,7 +4,7 @@ from django.template.defaultfilters import truncatewords_html
 from mezzanine.blog.models import BlogPost, BlogCategory
 from mezzanine.accounts.models import User
 
-from rest_framework import serializers
+from rest_framework import serializers, pagination
 
 from .models import Vote
 
@@ -29,6 +29,16 @@ class TalkDetailSerializer(TalkSerializer):
 
     def get_descrption(self, obj):
         return obj.content
+
+
+class PaginatedTalkSerializer(pagination.PaginationSerializer):
+    page = serializers.SerializerMethodField('get_page')
+
+    def get_page(self, obj):
+        return self.context['page']
+
+    class Meta:
+        object_serializer_class = TalkSerializer
 
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):

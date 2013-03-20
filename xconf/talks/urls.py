@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url, include
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import TalkList, TalkDetail, TalkFullDetail, VoteList, VoteDetail, CategoryList, CategoryDetail, CategoryTalks, CategoryUserVotes
+from .views import TalkList, TalkDetail, TalkFullDetail, VoteList, VoteDetail, CategoryList, CategoryDetail, CategoryUserVotes
 
 urlpatterns = patterns('xconf.talks.views',
     url(r'^$', 'api_root'),
@@ -14,7 +14,7 @@ urlpatterns = patterns('xconf.talks.views',
     url(r'^votes/(?P<pk>\d+)$', VoteDetail.as_view(), name='vote-detail'),
     url(r'^categories$', CategoryList.as_view(), name='category-list'),
     url(r'^categories/(?P<pk>\d+)$', CategoryDetail.as_view(), name='category-detail'),
-    url(r'^categories/(?P<pk>\d+)/talks$', CategoryTalks.as_view(), name='category-talks'),
+    url(r'^categories/(?P<pk>\d+)/talks$', 'category_talks', name='category-talks'),
     url(r'^categories/(?P<pk>\d+)/uservotes$', CategoryUserVotes.as_view(), name='category-uservotes'),
 )
 

@@ -1,4 +1,6 @@
-from django.core.paginator import Paginator, PageNotAnInteger
+import random
+
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from mezzanine.blog.models import BlogPost, BlogCategory
 from rest_framework import generics
@@ -7,7 +9,7 @@ from rest_framework.reverse import reverse
 from rest_framework.response import Response
 
 from .models import Vote
-from .serializers import TalkSerializer, TalkDetailSerializer, CategorySerializer, VoteSerializer, VoteTalkDetailSerializer
+from .serializers import TalkSerializer, TalkDetailSerializer, PaginatedTalkSerializer, CategorySerializer, VoteSerializer, VoteTalkDetailSerializer
 
 
 @api_view(['GET'])
@@ -44,14 +46,23 @@ class CategoryDetail(generics.RetrieveAPIView):
     serializer_class = CategorySerializer
 
 
-class CategoryTalks(generics.ListAPIView):
-    model = BlogPost
-    serializer_class = TalkSerializer
-    paginate_by = 8
+@api_view(['GET'])
+def category_talks(request, pk):
+    queryset = BlogCategory.objects.get(pk=pk).blogposts.all()
+    paginator = Paginator(queryset, 8)
 
-    def get_queryset(self):
-        pk = self.kwargs['pk']
-        return BlogCategory.objects.get(pk=pk).blogposts.all()
+    try:
+        page = int(request.QUERY_PARAMS.get('page'))
+        talks = paginator.page(page)
+    except (ValueError, PageNotAnInteger, EmptyPage):
+        page = random.randint(1, paginator.num_pages)
+        talks = paginator.page(page)
+
+    serializer_context = {'request': request, 'page': page}
+    serializer = PaginatedTalkSerializer(talks,
+                                         context=serializer_context)
+    return Response(serializer.data)
+
 
 class CategoryUserVotes(generics.ListAPIView):
     model=Vote

@@ -50,18 +50,15 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", "TalkDetail"
         return ("#" + category.hyphanizedTitle == window.location.hash) ? "active" : "";
     };
 
-    $scope.currentPage = 1;
+    $scope.currentPage = 0;
     $scope.pageSize = 8;
 
     $scope.talks = {results: []};
     $scope.userVotes = {results: []};
 
-    var getRandomInt = function(min, max){
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    };
-
     $scope.loadTalks = function(category){
         Talk.get({categoryId: category.id, page_size: $scope.pageSize, page: $scope.currentPage}, function(data){
+            $scope.currentPage = data.page;
             $scope.talks = data;
             $scope.nextAvailable = true;
             $scope.previousAvailable = true;
@@ -69,9 +66,7 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", "TalkDetail"
     };
 
     $scope.switchTalks = function(category) {
-        var totalCount = {1: 74, 2: 35, 3: 12, 4: 16 }; //Please talk to Krishna if you want to know why this kolaveri
-
-        $scope.currentPage = getRandomInt(1, Math.ceil(totalCount[category.id] / $scope.pageSize));
+        $scope.currentPage = 0;
 
         $scope.loadTalks(category);
         $scope.loadVotedTalks(category);
@@ -87,7 +82,7 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", "TalkDetail"
       var pages = Math.ceil($scope.talks.count / $scope.pageSize) + 1;
       $scope.currentPage = ($scope.currentPage + 1) % pages;
       if($scope.currentPage == 0){
-        $scope.currentPage += 1;
+        $scope.currentPage = 1;
       }
       $scope.loadTalks(category);
     };
