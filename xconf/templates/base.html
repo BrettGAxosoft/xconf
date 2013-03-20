@@ -37,6 +37,9 @@
     <script src="{{ STATIC_URL }}js/underscore.min.js"></script>
 </head>
 <body id="{% block body_id %}body{% endblock %}">
+  <div class="user">
+    {% include "includes/user_panel.html" %}
+  </div>
   <div ng-controller="XConfCtrl" class="xconf">
     <div class="pull-right">
       {% include "includes/user_panel.html" %}
