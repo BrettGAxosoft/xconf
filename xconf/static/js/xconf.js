@@ -5,6 +5,9 @@ angular.module('services', ['ngResource']).
     factory('Talk', function($resource) {
          return $resource('/talks/api/categories/:categoryId/talks', {categoryId: 'categoryId'});
     }).
+    factory('TalkDetail', function($resource) {
+         return $resource('/talks/api/talks/:id/detail', {id: 'id'});
+    }).
     factory('Vote', function($resource) {
          return $resource('/talks/api/votes/:id', {'id': '@id'});
     }).
@@ -29,7 +32,7 @@ angular.module('xconf', ['services']).config(function($interpolateProvider) {
     });
 });
 
-var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", function($scope, Category, Talk, Vote, VotedTalk){
+var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", "TalkDetail", function($scope, Category, Talk, Vote, VotedTalk, TalkDetail){
     Category.get(function(data){
         data.results = _(data.results).map(function(category){
             category.hyphanizedTitle = hyphanize(category.title);
@@ -51,6 +54,8 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", function($sc
     $scope.pageSize = 8;
 
     $scope.talks = {results: []};
+    $scope.userVotes = {results: []};
+
 
     $scope.loadTalks = function(category){
         Talk.get({categoryId: category.id, page_size: $scope.pageSize, page: $scope.currentPage}, function(data){
@@ -67,7 +72,6 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", function($sc
     };
 
     $scope.loadVotedTalks = function(category) {
-        $scope.userVotes = $scope.userVotes || {results: []};
         VotedTalk.get({categoryId: category.id}, function(data){
           $scope.userVotes = data;
         });
@@ -83,7 +87,18 @@ var XConfCtrl = ["$scope", "Category", "Talk", "Vote", "VotedTalk", function($sc
         $scope.loadTalks(category);
     };
 
+    $scope.showTalkDetails = function(talk, category) {
+      TalkDetail.get({id: talk.id}, function(talkDetails){
+        $scope.currentTalk = talkDetails;
+        $scope.currentCategory = category;
+        $('#talk-details').modal();
+      });
+    }
+
     $scope.hasVoted = function(talk) {
+      if(talk == null){
+        return false;
+      }
       return _($scope.userVotes.results).detect(function(vote){
         return vote.talk.id === talk.id;
       });
