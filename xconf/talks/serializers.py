@@ -53,9 +53,9 @@ class VoteSerializer(serializers.ModelSerializer):
         if user.votes.filter(talk=talk):
             msg = u"Already voted on this talk"
             raise ValidationError(msg)
-        if user.votes.filter(talk__categories=talk.categories.all()).count() >= 3:
-            msg = u"Only 3 votes per user per talk type"
-            raise ValidationError(msg)
+        # if user.votes.filter(talk__categories=talk.categories.all()).count() >= 3:
+        #     msg = u"Only 3 votes per user per talk type"
+        #     raise ValidationError(msg)
         return attr
 
 class VoteTalkDetailSerializer(VoteSerializer):
