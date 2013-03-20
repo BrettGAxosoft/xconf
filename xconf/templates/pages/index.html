@@ -142,11 +142,11 @@
 
 <div id="talk-details" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
-    <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(currentTalk, currentCategory)" ng-class="{'voted': hasVoted(currentTalk)}"></i>
-    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">[[currentTalk.title]]</h3>
   </div>
   <div class="modal-body">
+    <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(currentTalk, currentCategory)" ng-class="{'voted': hasVoted(currentTalk)}"></i>
     <p>[[currentTalk.description]]</p>
   </div>
 </div>
