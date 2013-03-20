@@ -100,7 +100,7 @@
           </a>
           <div>
             <h2 class="pull-left topic-title">[[category.title]]</h2>
-            <div class="votes">
+            <div class="votes" ng-show="userVotes.results">
               <div class="btn-group dropdown">
                 <button class="btn">Votes ([[userVotes.results.length]])</button>
                     <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -108,7 +108,10 @@
                 </button>
                 <ul class="dropdown-menu">
                   <li ng-repeat="vote in userVotes.results">
-                    <a>[[vote.talk.title]]</a>
+                    <a>
+                      [[vote.talk.title]]
+                      <i class="vote icon-remove" ng-click="unvote(vote.talk, category)"></i>
+                    </a>
                   </li>
                 </ul>
               </div>
