@@ -92,6 +92,12 @@
     <div class="container-fluid">
       <div class="row-fluid">   
         <div class="span12">
+          <a class="carousel-control left" ng-click="previousPage(category)" ng-show="previousAvailable">
+            <span class="icon-angle-left"></span>
+          </a>
+          <a class="carousel-control right" ng-click="nextPage(category)" ng-show="nextAvailable">
+            <span class="icon-angle-right"></span>
+          </a>
           <div>
             <h2 class="pull-left topic-title">[[category.title]]</h2>
             <div class="votes">
@@ -120,9 +126,6 @@
               </div>
             </div>
           </div>
-
-          <a class="page-nav prev" ng-click="previousPage(category)" ng-show="previousAvailable">Previous</a>
-          <a class="page-nav next" ng-click="nextPage(category)" ng-show="nextAvailable">Next</a>
 
           <div class="row-fluid">
             <div class="span3" ng-repeat="talk in talks.results | startFrom:4">
