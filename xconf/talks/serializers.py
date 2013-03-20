@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.template.defaultfilters import truncatewords_html
 
 from mezzanine.blog.models import BlogPost, BlogCategory
 from mezzanine.accounts.models import User
@@ -12,10 +13,14 @@ class TalkSerializer(serializers.HyperlinkedModelSerializer):
     id = serializers.Field()
     votes = serializers.Field(source='vote_set.count')
     category = serializers.Field(source='categories.all')
+    description = serializers.SerializerMethodField('get_descrption')
 
     class Meta:
         model = BlogPost
         fields = ('id', 'title', 'votes', 'category', 'description')
+
+    def get_descrption(self, obj):
+        return truncatewords_html(obj.content, 12)
 
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
