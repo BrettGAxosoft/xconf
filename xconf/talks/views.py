@@ -3,13 +3,19 @@ import random
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from mezzanine.blog.models import BlogPost, BlogCategory
-from rest_framework import generics
-from rest_framework.decorators import api_view
+from rest_framework import generics, permissions
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.reverse import reverse
 from rest_framework.response import Response
 
 from .models import Vote
 from .serializers import TalkSerializer, TalkDetailSerializer, PaginatedTalkSerializer, CategorySerializer, VoteSerializer, VoteTalkDetailSerializer
+
+
+class IsOwner(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        return obj.user == request.user
 
 
 @api_view(['GET'])
@@ -74,6 +80,7 @@ class CategoryUserVotes(generics.ListAPIView):
         return self.request.user.votes.filter(talk__categories=category)
 
 
+@permission_classes((IsOwner, ))
 class VoteList(generics.ListCreateAPIView):
     model = Vote
     serializer_class = VoteSerializer
@@ -85,6 +92,7 @@ class VoteList(generics.ListCreateAPIView):
         return Vote.objects.filter(user=self.request.user)
 
 
+@permission_classes((IsOwner, ))
 class VoteDetail(generics.RetrieveDestroyAPIView):
     model = Vote
     serializer_class = VoteSerializer
