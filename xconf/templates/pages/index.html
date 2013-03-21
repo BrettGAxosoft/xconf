@@ -146,7 +146,7 @@
     <h3 id="myModalLabel">[[currentTalk.title]]</h3>
   </div>
   <div class="modal-body">
-    <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(currentTalk, currentCategory)" ng-class="{'voted': hasVoted(currentTalk)}"></i>
+    <span class="badge badge-warning pull-right" ng-class="{'badge-success': hasVoted(currentTalk)}">[[currentTalk.votes]]</span>
     <p>[[currentTalk.description]]</p>
   </div>
 </div>
