@@ -58,6 +58,7 @@ class VoteSerializer(serializers.ModelSerializer):
         fields = ('id', 'talk', 'voter')
 
     def validate_voter(self, attr, value):
+        raise ValidationError("Voting closed!!!!")
         user = self.context['request'].user
         talk = attr['talk']
         if user.votes.filter(talk=talk):
