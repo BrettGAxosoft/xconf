@@ -114,7 +114,7 @@
             <div class="span3" ng-repeat="talk in talks.results | limitTo:4">
               <div class="hero-unit">
                 <div>
-                  <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(talk, category)" ng-class="{'voted': hasVoted(talk)}"></i>
+                  <span class="badge badge-warning pull-right" ng-class="{'badge-success': hasVoted(talk)}">[[talk.votes]]</span>
                   <h3 class="hover text-center" ng-click="showTalkDetails(talk, category)">[[talk.title]]</h3>
                 </div>
                 <p class="hover" ng-click="showTalkDetails(talk, category)">[[talk.description]]</p>
@@ -126,7 +126,7 @@
             <div class="span3" ng-repeat="talk in talks.results | startFrom:4">
               <div class="hover hero-unit">
                 <div>
-                  <i class="pull-right row vote icon-thumbs-up" ng-click="toggleVote(talk, category)" ng-class="{'voted': hasVoted(talk)}"></i>
+                  <span class="badge badge-warning pull-right" ng-class="{'badge-success': hasVoted(talk)}">[[talk.votes]]</span>
                   <h3 class="hover text-center" ng-click="showTalkDetails(talk, category)">[[talk.title]]</h3>
                 </div>
                 <p class="hover" ng-click="showTalkDetails(talk, category)">[[talk.description]]</p>

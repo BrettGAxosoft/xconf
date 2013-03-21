@@ -1,6 +1,7 @@
 import random
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Count
 
 from mezzanine.blog.models import BlogPost, BlogCategory
 from rest_framework import generics, permissions
@@ -54,14 +55,14 @@ class CategoryDetail(generics.RetrieveAPIView):
 
 @api_view(['GET'])
 def category_talks(request, pk):
-    queryset = BlogCategory.objects.get(pk=pk).blogposts.all()
+    queryset = BlogCategory.objects.get(pk=pk).blogposts.annotate(vote_count=Count('vote')).order_by('-vote_count', 'title')
     paginator = Paginator(queryset, 8)
 
     try:
         page = int(request.QUERY_PARAMS.get('page'))
         talks = paginator.page(page)
     except (ValueError, TypeError, PageNotAnInteger, EmptyPage):
-        page = random.randint(1, paginator.num_pages)
+        page = 1
         talks = paginator.page(page)
 
     serializer_context = {'request': request, 'page': page}
