@@ -93,7 +93,7 @@ class VoteList(generics.ListCreateAPIView):
 
 
 @permission_classes((IsOwner, ))
-class VoteDetail(generics.RetrieveDestroyAPIView):
+class VoteDetail(generics.RetrieveAPIView):
     model = Vote
     serializer_class = VoteSerializer
 
