@@ -102,7 +102,7 @@
                   <li ng-repeat="vote in userVotes.results">
                     <a>
                       [[vote.talk.title]]
-                      <i class="vote icon-remove" ng-click="unvote(vote.talk, category)"></i>
+                      <span class="badge badge-success pull-right">[[vote.talk.votes]]</span>
                     </a>
                   </li>
                 </ul>
