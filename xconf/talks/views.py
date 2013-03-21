@@ -60,7 +60,7 @@ def category_talks(request, pk):
     try:
         page = int(request.QUERY_PARAMS.get('page'))
         talks = paginator.page(page)
-    except (ValueError, PageNotAnInteger, EmptyPage):
+    except (ValueError, TypeError, PageNotAnInteger, EmptyPage):
         page = random.randint(1, paginator.num_pages)
         talks = paginator.page(page)
 
