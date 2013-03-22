@@ -81,6 +81,19 @@ USE_SOUTH = True
 
 BLOG_SLUG = "talks"
 
+EXTRA_MODEL_FIELDS = (
+    (
+        "mezzanine.blog.models.BlogPost.speakers",
+        "CharField",
+        ("Speakers",),
+        {"max_length": 400},
+    ),
+)
+
+###################
+# Plugin Settings #
+###################
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',

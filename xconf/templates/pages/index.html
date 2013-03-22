@@ -115,9 +115,10 @@
               <div class="hero-unit">
                 <div>
                   <span class="badge badge-warning pull-right" ng-class="{'badge-success': hasVoted(talk)}">[[talk.votes]]</span>
-                  <h3 class="hover text-center" ng-click="showTalkDetails(talk, category)">[[talk.title]]</h3>
+                  <h4 class="hover text-center" ng-click="showTalkDetails(talk, category)">[[talk.title]]</h4>
                 </div>
-                <p class="hover" ng-click="showTalkDetails(talk, category)">[[talk.description]]</p>
+                <p><span class="label label-inverse">Speakers</span> [[talk.speakers]]</p>
+                <p class="hover" ng-click="showTalkDetails(talk, category)"><span class="label label-inverse">Description</span> [[talk.description]]</p>
               </div>
             </div>
           </div>
@@ -127,9 +128,10 @@
               <div class="hover hero-unit">
                 <div>
                   <span class="badge badge-warning pull-right" ng-class="{'badge-success': hasVoted(talk)}">[[talk.votes]]</span>
-                  <h3 class="hover text-center" ng-click="showTalkDetails(talk, category)">[[talk.title]]</h3>
+                  <h4 class="hover text-center" ng-click="showTalkDetails(talk, category)">[[talk.title]]</h4>
                 </div>
-                <p class="hover" ng-click="showTalkDetails(talk, category)">[[talk.description]]</p>
+                <p><span class="label label-inverse">Speakers</span> [[talk.speakers]]</p>
+                <p class="hover" ng-click="showTalkDetails(talk, category)"><span class="label label-inverse">Description</span> [[talk.description]]</p>
               </div>
             </div>
           </div>
@@ -144,6 +146,7 @@
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">[[currentTalk.title]]</h3>
+    <p><span class="label label-inverse">Speakers</span> [[currentTalk.speakers]]</p>
   </div>
   <div class="modal-body">
     <span class="badge badge-warning pull-right" ng-class="{'badge-success': hasVoted(currentTalk)}">[[currentTalk.votes]]</span>
