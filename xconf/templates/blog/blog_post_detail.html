@@ -31,10 +31,12 @@
     <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
     {% endwith %}
     {% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}
+    {% trans "Speakers:" %} {{ blog_post.speakers }}
+    {% trans "Office:" %} {{ blog_post.office }}
+    {% trans "Id:" %} {{ blog_post.id }}
 </h6>
 {% endeditable %}
 {% endblock %}
-
 {% block blog_post_detail_commentlink %}
 <p>
     {% if blog_post.allow_comments %}
@@ -52,7 +54,7 @@
 {% endblock %}
 
 {% block blog_post_detail_featured_image %}
-{% if BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+{% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
 <p><img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"></p>
 {% endif %}
 {% endblock %}
