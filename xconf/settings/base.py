@@ -88,6 +88,12 @@ EXTRA_MODEL_FIELDS = (
         ("Speakers",),
         {"max_length": 400},
     ),
+    (
+        "mezzanine.blog.models.BlogPost.office",
+        "CharField",
+        ("Office",),
+        {"max_length": 40},
+    ),
 )
 
 ###################

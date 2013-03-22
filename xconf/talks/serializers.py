@@ -17,7 +17,7 @@ class TalkSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = BlogPost
-        fields = ('id', 'title', 'votes', 'category', 'description', 'speakers')
+        fields = ('id', 'title', 'votes', 'category', 'description', 'speakers', 'office')
 
     def get_descrption(self, obj):
         return truncatewords_html(obj.content, 12)
@@ -25,7 +25,7 @@ class TalkSerializer(serializers.HyperlinkedModelSerializer):
 class TalkDetailSerializer(TalkSerializer):
     class Meta:
         model = BlogPost
-        fields = ('id', 'title', 'votes', 'category', 'description', 'speakers')
+        fields = ('id', 'title', 'votes', 'category', 'description', 'speakers', 'office')
 
     def get_descrption(self, obj):
         return obj.content

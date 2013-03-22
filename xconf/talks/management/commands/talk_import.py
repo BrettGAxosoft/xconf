@@ -58,9 +58,9 @@ class Command(BaseCommand):
                 talk = BlogPost.objects.filter(title__exact=row[2], user_id=u.id)[0]
                 talk.content = row[3]
                 talk.speakers = row[4]
+                talk.office = row[5]
                 talk.save()
             except:
-                print row[2]
-                talk = BlogPost(title=row[2], content=row[3], user_id=u.id, speakers=row[4])
+                talk = BlogPost(title=row[2], content=row[3], user_id=u.id, speakers=row[4], office=row[5])
                 talk.save()
                 talk.categories.add(int(row[7]))
