@@ -46,10 +46,19 @@
       </div>
     </div>
     <div class="container-fluid">
-      <div class="page-header">
-        <h1>This is your chance to have a say on what you want to hear and learn at XConf S03E01</h1>
-        <p>Vote for the talks that you would like to hear at XConf S03E01. Talks are categorized as below. Start voting!</p>
-        <p>Note: We haven't included speaker details so that the vote is on the talk rather than a speaker.</p>
+      <div class="statistics row-fluid">
+        <div class="span3">
+          <h1>{{ statistics.proposals }}<small>proposals</small></h1>
+        </div>
+        <div class="span3">
+          <h1>{{ statistics.votes }}<small>votes</small></h1>
+        </div>
+        <div class="span3">
+          <h1>{{ statistics.voters }}<small>voters</small></h1>
+        </div>
+        <div class="span3">
+          <h1>1 <small>conference</small></h1>
+        </div>
       </div>
       <div class="row-fluid categories">
         <div class="span3 page-2">
