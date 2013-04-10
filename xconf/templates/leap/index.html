@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n mezzanine_tags %}
+
+{% block meta_title %}{% trans "Leap" %}{% endblock %}
+{% block title %}{% trans "Leap" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Leap" %}</li>
+{% endblock %}
+
+{% block extra_css %}
+  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.less" charset="utf-8">
+{% endblock %}
+
+{% block extra_js %}
+    <script type='text/javascript' src="{{ STATIC_URL }}js/xconf.js"></script>
+{% endblock %}
+
+{% block main %}
+
+{% endblock %}

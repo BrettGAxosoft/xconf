@@ -15,6 +15,8 @@ urlpatterns = patterns("",
     # admin interface, which would be marginally more secure.
     ("^admin", include(admin.site.urls)),
 
+    url(r'^leap/', include('xconf.leap.urls')),
+
     url(r'^talks/api/', include('xconf.talks.urls')),
 
     (r'^accounts/login$', 'django_cas.views.login'),
