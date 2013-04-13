@@ -62,9 +62,20 @@ article {
 .slides {
     background: rgba(121, 255, 0, 0.2);
 }
-.slides section,
-.slides .arrow:hover {
-    background: rgb(131, 199, 69);
+.slides section {
+    background: #83c745;
+
+    &.technical {
+        background: #E81368;
+    }
+
+    &.general {
+        background: #159E45;
+    }
+
+    &.lightning {
+        background: #F0ED3E;
+    }
 }
 .slides a {
     color: rgb(131, 199, 69);
