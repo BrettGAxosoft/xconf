@@ -10,12 +10,20 @@
 
 {% block extra_css %}
   <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.less" charset="utf-8">
+  <link type="text/less" rel="stylesheet" href="{{ STATIC_URL }}css/leap.less" charset="utf-8">
 {% endblock %}
 
 {% block extra_js %}
     <script type='text/javascript' src="{{ STATIC_URL }}js/xconf.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/bespoke.min.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/bespoke-loop.min.js"></script>
+    <script type='text/javascript' src="{{ STATIC_URL }}js/leap.js"></script>
 {% endblock %}
 
 {% block main %}
-
+    <article class="slides bespoke-parent">
+        <section class="bespoke-slide">Slide 1</section>
+        <section class="bespoke-slide">Slide 2</section>
+        <section class="bespoke-slide">Slide 3</section>
+    </article>
 {% endblock %}

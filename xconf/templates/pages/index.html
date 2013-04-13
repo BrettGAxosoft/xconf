@@ -15,13 +15,29 @@
 {% block extra_js %}
     <script type='text/javascript' src="{{ STATIC_URL }}js/xconf.js"></script>
 {% endblock %}
-{% block navigation %}
-  <li ng-repeat="category in categories.results" class="[[isCurrentPage(category)]] nav-item page-[[category.id]]">
-    <a href="#[[category.hyphanizedTitle]]" ng-click="switchTalks(category)">[[category.title]]</a>
-  </li>
-{% endblock %}
 
 {% block main %}
+<div class="user">
+    {% include "includes/user_panel.html" %}
+  </div>
+  <div ng-controller="XConfCtrl" class="xconf">
+    <div class="pull-right">
+      {% include "includes/user_panel.html" %}
+    </div>
+    <section id="subnav-wrapper" >
+      <div class="navbar visible-tablet visible-desktop navbar-fixed-bottom">
+        <div class="navbar-inner">
+          <ul class="nav page-0">
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li ng-repeat="category in categories.results" class="[[isCurrentPage(category)]] nav-item page-[[category.id]]">
+              <a href="#[[category.hyphanizedTitle]]" ng-click="switchTalks(category)">[[category.title]]</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
   <input name="csrfmiddlewaretoken" value="{{ csrf_token }}" type="hidden"/>
   <section id="home" class="page">
     <div class="hero-unit">
@@ -161,6 +177,7 @@
     <span class="badge badge-warning pull-right" ng-class="{'badge-success': hasVoted(currentTalk)}">[[currentTalk.votes]]</span>
     <p>[[currentTalk.description]]</p>
   </div>
+</div>
 </div>
 
 {% endblock %}

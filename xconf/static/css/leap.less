@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #606060;
+}
+
+article {
+    @perspective: 600px;
+    -webkit-perspective: @perspective;
+    -moz-perspective: @perspective;
+    -ms-perspective: @perspective;
+    -o-perspective: @perspective;
+    perspective: @perspective;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    section {
+        -webkit-transform: none;
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        transform: none;
+        background: #c0c0c0;
+        border-radius: 30px;
+        width: 512px;
+        height: 380px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -256px;
+        margin-top: -220px;
+        opacity: 0;
+
+        &.bespoke-slide {
+            -webkit-transition: -webkit-transform .7s ease, opacity .7s ease, background-color .7s ease;
+            -moz-transition: -moz-transform .7s ease, opacity .7s ease, background-color .7s ease;
+            -ms-transition: -ms-transform .7s ease, opacity .7s ease, background-color .7s ease;
+            -o-transition: -o-transform .7s ease, opacity .7s ease, background-color .7s ease;
+            transition: transform .7s ease, opacity .7s ease, background-color .7s ease;
+        }
+
+        &.bespoke-active {
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+}
+
+
+.slides {
+    background: rgba(121, 255, 0, 0.2);
+}
+.slides section,
+.slides .arrow:hover {
+    background: rgb(131, 199, 69);
+}
+.slides a {
+    color: rgb(131, 199, 69);
+}
+.slides section.bespoke-before {
+    -webkit-transform: translateX(-980px) rotateY(-72deg) translateX(-1290px);
+    -moz-transform: translateX(-980px) rotateY(-72deg) translateX(-1290px);
+    -ms-transform: translateX(-980px) rotateY(-72deg) translateX(-1290px);
+    -o-transform: translateX(-980px) rotateY(-72deg) translateX(-1290px);
+    transform: translateX(-980px) rotateY(-72deg) translateX(-1290px);
+    opacity: 0;
+}
+.slides section.bespoke-before-2 {
+    -webkit-transform: translateX(-590px) rotateY(-52deg) translateX(-780px);
+    -moz-transform: translateX(-590px) rotateY(-52deg) translateX(-780px);
+    -ms-transform: translateX(-590px) rotateY(-52deg) translateX(-780px);
+    -o-transform: translateX(-590px) rotateY(-52deg) translateX(-780px);
+    transform: translateX(-590px) rotateY(-52deg) translateX(-780px);
+    opacity: 0.3;
+}
+.slides section.bespoke-before-1 {
+    -webkit-transform: translateX(-270px) rotateY(-30deg) translateX(-290px);
+    -moz-transform: translateX(-270px) rotateY(-30deg) translateX(-290px);
+    -ms-transform: translateX(-270px) rotateY(-30deg) translateX(-290px);
+    -o-transform: translateX(-270px) rotateY(-30deg) translateX(-290px);
+    transform: translateX(-270px) rotateY(-30deg) translateX(-290px);
+    opacity: 0.5;
+}
+.slides section.bespoke-after {
+    -webkit-transform: translateX(980px) rotateY(72deg) translateX(1290px);
+    -moz-transform: translateX(980px) rotateY(72deg) translateX(1290px);
+    -ms-transform: translateX(980px) rotateY(72deg) translateX(1290px);
+    -o-transform: translateX(980px) rotateY(72deg) translateX(1290px);
+    transform: translateX(980px) rotateY(72deg) translateX(1290px);
+    opacity: 0;
+}
+.slides section.bespoke-after-1 {
+    -webkit-transform: translateX(270px) rotateY(30deg) translateX(290px);
+    -moz-transform: translateX(270px) rotateY(30deg) translateX(290px);
+    -ms-transform: translateX(270px) rotateY(30deg) translateX(290px);
+    -o-transform: translateX(270px) rotateY(30deg) translateX(290px);
+    transform: translateX(270px) rotateY(30deg) translateX(290px);
+    opacity: 0.5;
+}
+.slides section.bespoke-after-2 {
+    -webkit-transform: translateX(590px) rotateY(52deg) translateX(780px);
+    -moz-transform: translateX(590px) rotateY(52deg) translateX(780px);
+    -ms-transform: translateX(590px) rotateY(52deg) translateX(780px);
+    -o-transform: translateX(590px) rotateY(52deg) translateX(780px);
+    transform: translateX(590px) rotateY(52deg) translateX(780px);
+    opacity: 0.3;
+}
