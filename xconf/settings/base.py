@@ -311,6 +311,7 @@ INSTALLED_APPS = (
     "django_cas",
 
     "xconf.talks",
+    "xconf.leap",
 )
 
 # List of processors used by RequestContext to populate the context.
