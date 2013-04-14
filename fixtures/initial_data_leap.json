@@ -1,0 +1,65 @@
+[
+  {
+    "pk": 1,
+    "model": "leap.schedule",
+    "fields": {
+      "conference": "Xconf"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "leap.track",
+    "fields": {
+      "name": "Track 1",
+      "schedule": 1
+    }
+  },
+  {
+    "pk": 2,
+    "model": "leap.track",
+    "fields": {
+      "name": "Track 2",
+      "schedule": 1
+    }
+  },
+  {
+    "pk": 3,
+    "model": "leap.track",
+    "fields": {
+      "name": "Track 3",
+      "schedule": 1
+    }
+  },
+  {
+    "pk": 1,
+    "model": "leap.type",
+    "fields": {
+      "duration": 45,
+      "name": "Presentation"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "leap.type",
+    "fields": {
+      "duration": 60,
+      "name": "Lightning Talk"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "leap.type",
+    "fields": {
+      "duration": 90,
+      "name": "Workshop"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "leap.type",
+    "fields": {
+      "duration": 60,
+      "name": "My First Year At TW"
+    }
+  }
+]
