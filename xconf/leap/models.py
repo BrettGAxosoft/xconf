@@ -33,3 +33,6 @@ class Slot(models.Model):
 
     def __str__(self):
         return "{0} ({1})".format(self.start_time, self.type)
+
+    class Meta:
+        ordering = ['start_time', 'name']
