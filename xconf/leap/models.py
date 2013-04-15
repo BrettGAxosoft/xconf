@@ -28,6 +28,8 @@ class Slot(models.Model):
     track = models.ForeignKey(Track, related_name='slots')
     type = models.ForeignKey(Type, related_name='slots')
     start_time = models.TimeField()
+    name = models.CharField(max_length=300)
+    by = models.CharField(max_length=100)
 
     def __str__(self):
         return "{0} ({1})".format(self.start_time, self.type)
