@@ -26,10 +26,8 @@
         {% for track in tracks %}
             {% for slot in track.slots.all %}
                 <section class="bespoke-slide {{ slot.type.name|slugify}}">
-                    <h4>{{ slot.name }} <small>{{ slot.by}}</small</4>
-                    
+                    <h4>{{ slot.name }} <small>{{ slot.by }}</small></4>
                 </section>
-
             {% endfor %}
         {% endfor %}
     </article>
