@@ -1,0 +1,403 @@
+[
+  {
+    "pk": 1,
+    "model": "leap.schedule",
+    "fields": {
+      "conference": "Xconf"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "leap.track",
+    "fields": {
+      "name": "Track 1",
+      "schedule": 1
+    }
+  },
+  {
+    "pk": 2,
+    "model": "leap.track",
+    "fields": {
+      "name": "Track 2",
+      "schedule": 1
+    }
+  },
+  {
+    "pk": 3,
+    "model": "leap.track",
+    "fields": {
+      "name": "Track 3",
+      "schedule": 1
+    }
+  },
+  {
+    "pk": 1,
+    "model": "leap.type",
+    "fields": {
+      "duration": 45,
+      "name": "Presentation"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "leap.type",
+    "fields": {
+      "duration": 60,
+      "name": "Lightning Talk"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "leap.type",
+    "fields": {
+      "duration": 90,
+      "name": "Workshop"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "leap.type",
+    "fields": {
+      "duration": 60,
+      "name": "My First Year At TW"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "leap.type",
+    "fields": {
+      "duration": 45,
+      "name": "Break"
+    }
+  },
+  {
+    "pk": 1,
+    "model": "leap.slot",
+    "fields": {
+      "track": 1,
+      "start_time": "09:30:00",
+      "type": 1,
+      "name": "n different ways to sync data - story of amplify",
+      "by": "Selvakumar Natesan"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "leap.slot",
+    "fields": {
+      "track": 1,
+      "start_time": "10:20:00",
+      "type": 3,
+      "name": "Continuous Deployment using Chef",
+      "by": "Priyadarshini, Deepthi, Sharanya, Nithya, Agalya"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "leap.slot",
+    "fields": {
+      "track": 1,
+      "start_time": "12:00:00",
+      "type": 1,
+      "name": "Design ideas that helped build Apache Hadoop",
+      "by": "Hemanth Yamijala"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "leap.slot",
+    "fields": {
+      "track": 1,
+      "start_time": "13:30:00",
+      "type": 3,
+      "name": "Angular Awesomeness",
+      "by": "Praveenram Balachander, Chandrasekar Swaminathan, Sanjana Bayya"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "leap.slot",
+    "fields": {
+      "track": 1,
+      "start_time": "15:10:00",
+      "type": 2,
+      "name": "Lightning Talks",
+      "by": " "
+    }
+  },
+  {
+    "pk": 6,
+    "model": "leap.slot",
+    "fields": {
+      "track": 1,
+      "start_time": "16:10:00",
+      "type": 4,
+      "name": "My First Year @ TW",
+      "by": " "
+    }
+  },
+  {
+    "pk": 7,
+    "model": "leap.slot",
+    "fields": {
+      "track": 1,
+      "start_time": "17:15:00",
+      "type": 1,
+      "name": "Mathematical Image Generation",
+      "by": "Ashok Gowtham M"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "leap.slot",
+    "fields": {
+      "track": 2,
+      "start_time": "09:30:00",
+      "type": 1,
+      "name": "Cassandra and Titan",
+      "by": "Vagmi Mudumbai"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "leap.slot",
+    "fields": {
+      "track": 2,
+      "start_time": "10:20:00",
+      "type": 1,
+      "name": "Visualizations in Android - A case in Retail",
+      "by": "Khaarthigha S, Sri Amala Devi, Shaheedha, SeshaPG, VarunVM"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "leap.slot",
+    "fields": {
+      "track": 2,
+      "start_time": "11:10:00",
+      "type": 1,
+      "name": "Playing with Future (Non-blocking architecture using Scala, Akka & Play)",
+      "by": "Sunit Parekh"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "leap.slot",
+    "fields": {
+      "track": 2,
+      "start_time": "12:00:00",
+      "type": 1,
+      "name": "Continuous Monitoring",
+      "by": "Madhurranjan & Ranjan"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "leap.slot",
+    "fields": {
+      "track": 2,
+      "start_time": "13:30:00",
+      "type": 3,
+      "name": "Android automation workshop",
+      "by": "Christopher Rex, Balaji G and Arther"
+    }
+  },
+  {
+    "pk": 13,
+    "model": "leap.slot",
+    "fields": {
+      "track": 2,
+      "start_time": "15:10:00",
+      "type": 2,
+      "name": "Lightning Talks",
+      "by": " "
+    }
+  },
+  {
+    "pk": 14,
+    "model": "leap.slot",
+    "fields": {
+      "track": 2,
+      "start_time": "16:10:00",
+      "type": 4,
+      "name": "My First Year @ TW",
+      "by": " "
+    }
+  },
+  {
+    "pk": 15,
+    "model": "leap.slot",
+    "fields": {
+      "track": 2,
+      "start_time": "17:15:00",
+      "type": 1,
+      "name": "Performance tuning of Hybrid mobile apps",
+      "by": "Navneet, Isha, Hephzibah"
+    }
+  },
+  {
+    "pk": 16,
+    "model": "leap.slot",
+    "fields": {
+      "track": 3,
+      "start_time": "09:30:00",
+      "type": 1,
+      "name": "From Chennai to Kampala - how we helped deliver TW East Africa's first billable project ",
+      "by": "Suganthi , Kavitha"
+    }
+  },
+  {
+    "pk": 17,
+    "model": "leap.slot",
+    "fields": {
+      "track": 3,
+      "start_time": "10:20:00",
+      "type": 3,
+      "name": "Learning the fun way - Games and Activities",
+      "by": "Pankaj Kanchankar"
+    }
+  },
+  {
+    "pk": 18,
+    "model": "leap.slot",
+    "fields": {
+      "track": 3,
+      "start_time": "12:00:00",
+      "type": 1,
+      "name": "50 stories in 15 minutes !",
+      "by": "Mangalam Nandakumar"
+    }
+  },
+  {
+    "pk": 19,
+    "model": "leap.slot",
+    "fields": {
+      "track": 3,
+      "start_time": "13:30:00",
+      "type": 1,
+      "name": "Gamification and UX Design",
+      "by": "Joseph Daniel"
+    }
+  },
+  {
+    "pk": 20,
+    "model": "leap.slot",
+    "fields": {
+      "track": 3,
+      "start_time": "14:30:00",
+      "type": 1,
+      "name": "Novice Entrepreneur",
+      "by": "Umar Akhter"
+    }
+  },
+  {
+    "pk": 21,
+    "model": "leap.slot",
+    "fields": {
+      "track": 3,
+      "start_time": "15:10:00",
+      "type": 2,
+      "name": "Lightning Talks",
+      "by": " "
+    }
+  },
+  {
+    "pk": 22,
+    "model": "leap.slot",
+    "fields": {
+      "track": 3,
+      "start_time": "16:10:00",
+      "type": 4,
+      "name": "My First Year @ TW",
+      "by": " "
+    }
+  },
+  {
+    "pk": 23,
+    "model": "leap.slot",
+    "fields": {
+      "track": 3,
+      "start_time": "17:15:00",
+      "type": 1,
+      "name": "Influencing Effectively",
+      "by": "Satish Viswanathan"
+    }
+  },
+  {
+    "pk": 24,
+    "model": "leap.slot",
+    "fields": {
+      "track": 1,
+      "start_time": "11:10:00",
+      "type": 3,
+      "name": "Continuous Deployment using Chef",
+      "by": "Priyadarshini, Deepthi, Sharanya, Nithya, Agalya"
+    }
+  },
+  {
+    "pk": 25,
+    "model": "leap.slot",
+    "fields": {
+      "track": 3,
+      "start_time": "11:10:00",
+      "type": 3,
+      "name": "Learning the fun way - Games and Activities",
+      "by": "Pankaj Kanchankar"
+    }
+  },
+  {
+    "pk": 26,
+    "model": "leap.slot",
+    "fields": {
+      "track": 1,
+      "start_time": "14:20:00",
+      "type": 3,
+      "name": "Angular Awesomeness",
+      "by": "Praveenram Balachander, Chandrasekar Swaminathan, Sanjana Bayya"
+    }
+  },
+  {
+    "pk": 27,
+    "model": "leap.slot",
+    "fields": {
+      "track": 2,
+      "start_time": "14:20:00",
+      "type": 3,
+      "name": "Android automation workshop",
+      "by": "Christopher Rex, Balaji G and Arther"
+    }
+  },
+  {
+    "pk": 28,
+    "model": "leap.slot",
+    "fields": {
+      "track": 1,
+      "start_time": "12:45:00",
+      "type": 5,
+      "name": "Lunch",
+      "by": " "
+    }
+  },
+  {
+    "pk": 29,
+    "model": "leap.slot",
+    "fields": {
+      "track": 2,
+      "start_time": "12:45:00",
+      "type": 5,
+      "name": "Lunch",
+      "by": " "
+    }
+  },
+  {
+    "pk": 30,
+    "model": "leap.slot",
+    "fields": {
+      "track": 3,
+      "start_time": "12:45:00",
+      "type": 5,
+      "name": "Lunch",
+      "by": " "
+    }
+  }
+]
