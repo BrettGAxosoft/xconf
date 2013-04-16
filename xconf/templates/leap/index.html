@@ -23,12 +23,22 @@
 
 {% block main %}
     <article class="slides bespoke-parent">
-        {% for track in tracks %}
-            {% for slot in track.slots.all %}
-                <section class="bespoke-slide {{ slot.type.name|slugify}}">
-                    <h4>{{ slot.name }} <small>{{ slot.by }}</small></4>
-                </section>
-            {% endfor %}
+        {% for slot in slots %}
+            <section class="bespoke-slide">
+                <h1>{{ slot.0.start_time }} </h1>
+                <div class="schedule {{ slot.0.type.name|slugify}}">
+                    <h4>{{ slot.0.name }}</h4>
+                    <p>{{ slot.0.by }}</p>
+                </div>
+                <div class="schedule {{ slot.1.type.name|slugify}}">
+                    <h4>{{ slot.1.name }}</h4>
+                    <p>{{ slot.1.by }}</p>
+                </div>
+                <div class="schedule {{ slot.2.type.name|slugify}}">
+                    <h4>{{ slot.2.name }}</h4>
+                    <p>{{ slot.2.by }}</p>
+                </div>
+            </section>
         {% endfor %}
     </article>
 {% endblock %}
